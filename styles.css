@@ -1,16 +1,22 @@
 :root {
     /* Color Palette */
-    --color-base: #F6F4F2;      /* Ecru / Plaster */
-    --color-accent-blue: #1D2740; /* Japan Blue */
-    --color-accent-green: #2F4538; /* Deep Green */
-    --color-text: #333333;      /* Charcoal */
+    --color-base: #F6F4F2;
+    /* Ecru / Plaster */
+    --color-accent-blue: #1D2740;
+    /* Japan Blue */
+    --color-accent-green: #2F4538;
+    /* Deep Green */
+    --color-text: #333333;
+    /* Charcoal */
     --color-text-light: #666666;
     --color-white: #FFFFFF;
-    
+    --color-accent-wood: #C69C6D;
+    /* Pitch Deck Wood */
+
     /* Typography */
     --font-serif: 'Shippori Mincho', serif;
     --font-sans: 'Inter', sans-serif;
-    
+
     /* Spacing */
     --section-padding: 120px;
     --container-max-width: 1200px;
@@ -31,7 +37,9 @@ body {
 }
 
 /* Typography Utils */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: 500;
     letter-spacing: 0.1em;
 }
@@ -122,7 +130,8 @@ h1, h2, h3 {
     z-index: 2;
     color: var(--color-white);
     display: flex;
-    flex-direction: row-reverse; /* For vertical text positioning */
+    flex-direction: row-reverse;
+    /* For vertical text positioning */
     align-items: flex-start;
     gap: 60px;
     margin-top: -50px;
@@ -190,7 +199,7 @@ h1, h2, h3 {
 .feature-card {
     padding: 40px;
     background: var(--color-white);
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -200,7 +209,7 @@ h1, h2, h3 {
 
 .feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
 .feature-card.image-card {
@@ -222,7 +231,8 @@ h1, h2, h3 {
     font-family: var(--font-sans);
     font-size: 3rem;
     color: var(--color-base);
-    text-shadow: -1px -1px 0 var(--color-text), 1px -1px 0 var(--color-text), -1px 1px 0 var(--color-text), 1px 1px 0 var(--color-text); /* Outline effect */
+    text-shadow: -1px -1px 0 var(--color-text), 1px -1px 0 var(--color-text), -1px 1px 0 var(--color-text), 1px 1px 0 var(--color-text);
+    /* Outline effect */
     opacity: 0.2;
     margin-bottom: 20px;
     line-height: 1;
@@ -250,7 +260,7 @@ h1, h2, h3 {
     text-align: center;
     border-radius: 2px;
     position: relative;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .plan-card.villager {
@@ -308,7 +318,8 @@ h1, h2, h3 {
 }
 
 .discount-note {
-    color: #FFD700; /* Goldish */
+    color: #FFD700;
+    /* Goldish */
     font-weight: bold;
     margin-bottom: 40px;
     font-family: var(--font-sans);
@@ -402,22 +413,22 @@ h1, h2, h3 {
         grid-template-columns: 1fr;
         gap: 60px;
     }
-    
+
     .plan-card.villager {
         transform: scale(1);
     }
-    
+
     .hero-content {
         flex-direction: column-reverse;
         align-items: center;
         text-align: center;
         margin-top: 0;
     }
-    
+
     .hero-sub {
         writing-mode: horizontal-tb;
         border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.5);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
         padding-right: 0;
         padding-bottom: 20px;
         height: auto;
@@ -425,7 +436,7 @@ h1, h2, h3 {
         width: 100%;
         text-align: center;
     }
-    
+
     .vertical-text {
         writing-mode: horizontal-tb;
         font-size: 2.5rem;

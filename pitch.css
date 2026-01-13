@@ -1,0 +1,615 @@
+/* Pitch Deck Specific Styles */
+
+/* Base & Utilities */
+.pitch-body {
+    background-color: var(--color-base);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    /* Default to Inter/Sans */
+}
+
+.pitch-serif {
+    font-family: var(--font-serif);
+}
+
+.pitch-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+    margin-bottom: 2rem;
+}
+
+.mb-10 {
+    margin-bottom: 2.5rem;
+}
+
+.mb-12 {
+    margin-bottom: 3rem;
+}
+
+.mb-16 {
+    margin-bottom: 4rem;
+}
+
+.mb-20 {
+    margin-bottom: 5rem;
+}
+
+/* Navigation */
+.pitch-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(246, 244, 242, 0.95);
+    /* var(--color-base) with opacity */
+    backdrop-filter: blur(4px);
+    z-index: 50;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+    /* h-16 */
+}
+
+.nav-links {
+    display: none;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+}
+
+.nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-accent-green);
+}
+
+.nav-link-cta {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 1.5rem;
+}
+
+/* Mobile Menu */
+.mobile-menu-btn {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+@media (min-width: 768px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+}
+
+#mobile-menu {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    background: var(--color-base);
+}
+
+#mobile-menu.hidden {
+    display: none;
+}
+
+#mobile-menu button,
+#mobile-menu a {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0;
+    background: none;
+    border: none;
+    font-size: 0.875rem;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+/* Hero Section */
+.pitch-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 4rem;
+    overflow: hidden;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1598155523122-38423bb4d6c1?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tag-label {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--color-accent-green);
+    color: var(--color-accent-green);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    color: var(--color-accent-green);
+    font-family: var(--font-serif);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.hero-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-hero {
+    background-color: var(--color-text);
+    color: var(--color-white);
+    padding: 0.75rem 2rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-weight: 500;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-hero:hover {
+    background-color: var(--color-accent-green);
+}
+
+/* Sections General */
+.pitch-section {
+    padding: 5rem 0;
+}
+
+.bg-light {
+    background-color: rgba(239, 235, 224, 0.3);
+}
+
+/* #EFEBE0 approx */
+.bg-dark {
+    background-color: var(--color-text);
+    color: var(--color-white);
+}
+
+.bg-base {
+    background-color: var(--color-base);
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.grid-3 {
+    display: grid;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Cards */
+.pitch-card {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* shadow-sm equivalent border */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pitch-card.hover-effect:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.border-l-accent {
+    border-left: 4px solid var(--color-text);
+}
+
+.border-l-green {
+    border-left: 4px solid var(--color-accent-green);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: var(--font-serif);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Lists */
+.check-list {
+    list-style: none;
+    padding: 0;
+}
+
+.check-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.check-list strong {
+    margin-right: 0.5rem;
+    color: var(--color-text);
+}
+
+/* Product Section */
+.product-visual {
+    background-color: #EFEBE0;
+    border-radius: 0.75rem;
+    height: 24rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, var(--color-text), transparent);
+    opacity: 0.2;
+}
+
+.product-visual-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+/* Pricing Calculator */
+.pricing-calculator {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.toggle-group {
+    display: flex;
+    background: #EFEBE0;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: rgba(58, 53, 48, 0.6);
+}
+
+.toggle-btn.active {
+    background: var(--color-white);
+    font-weight: 700;
+    color: var(--color-text);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+    background: var(--color-base);
+}
+
+.price-display {
+    background: var(--color-text);
+    color: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.price-total {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    font-weight: 700;
+}
+
+.savings-notice {
+    text-align: center;
+    color: var(--color-accent-green);
+    font-weight: 700;
+    font-size: 0.875rem;
+    background: rgba(93, 112, 82, 0.1);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-top: 1rem;
+    display: none;
+    /* Toggled by JS */
+}
+
+/* Invisible Tech Flow */
+.tech-step {
+    background: #4A4540;
+    /* Slightly lighter than charcoal */
+    padding: 2rem;
+    border-radius: 0.75rem;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.tech-step:hover {
+    transform: translateY(-0.5rem);
+}
+
+.tech-icon-wrapper {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.875rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.bg-wood {
+    background-color: var(--color-accent-wood);
+}
+
+.bg-green {
+    background-color: var(--color-accent-green);
+}
+
+.bg-dark-accent {
+    background-color: var(--color-text);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Ripple Animation */
+.ripple-effect {
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.animate-ripple {
+    animation: ripple 1.5s infinite;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Roadmap Timeline */
+.timeline-wrapper {
+    position: relative;
+}
+
+.timeline-line {
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-accent-green), var(--color-accent-wood), transparent);
+    top: 0;
+    bottom: 0;
+    left: 1.25rem;
+    /* Adjust for icon centering */
+}
+
+@media (min-width: 768px) {
+    .timeline-line {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    /* Mobile: start */
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .timeline-item {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .timeline-item:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+        text-align: right;
+        /* Optional */
+    }
+}
+
+.timeline-marker {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 4px solid var(--color-text);
+    background: var(--color-accent-green);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.timeline-marker.p2 {
+    background: var(--color-accent-wood);
+    color: var(--color-text);
+}
+
+.timeline-marker.p3 {
+    background: var(--color-base);
+    color: var(--color-text);
+}
+
+.timeline-content {
+    background: #4A4540;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--color-accent-green);
+    flex-grow: 1;
+    margin-left: 1rem;
+    max-width: 100%;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    border-left: none;
+    border-right: 4px solid var(--color-accent-green);
+    /* Or keep all left? Pitch deck had color variations */
+}
+
+@media (min-width: 768px) {
+    .timeline-content {
+        width: 40%;
+        /* Approx width */
+        margin: 0 2rem;
+        flex-grow: 0;
+    }
+}
+
+/* Chart Container */
+.chart-container-wrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+@media (min-width: 768px) {
+    .chart-container-wrapper {
+        height: 350px;
+    }
+}
+
+/* Footer */
+.pitch-footer {
+    background-color: var(--color-text);
+    color: var(--color-white);
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid #4A4540;
+}
