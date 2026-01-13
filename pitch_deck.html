@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re:Village - Digital Detox × Web3 DAO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Custom Font Settings */
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #FDFCF8;
+            /* Warm Off-white */
+            color: #3A3530;
+            /* Dark Charcoal */
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        /* Chart Container Styling - MANDATORY */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #EFEBE0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #C69C6D;
+            border-radius: 4px;
+        }
+
+        /* Interactive Elements Styles */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Navigation Active State */
+        .nav-link.active {
+            color: #5D7052;
+            border-bottom: 2px solid #5D7052;
+        }
+
+        /* Animation Utilities */
+        @keyframes ripple {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .animate-ripple {
+            animation: ripple 1.5s infinite;
+        }
+    </style>
+    <!-- Chosen Palette: Warm Neutrals & Nature (Cream: #FDFCF8, Charcoal: #3A3530, Green: #5D7052, Wood: #C69C6D) -->
+    <!-- Application Structure Plan: A single-page narrative dashboard. 
+         1. Hero: Vision & Mood. 
+         2. Problem/Solution: Interactive comparison to establish context.
+         3. Product & Pricing: Calculator to demonstrate business logic.
+         4. Architecture: Visual flow of the "Invisible Tech".
+         5. Economy & Governance: Interactive charts for Tokenomics and Voting Power.
+         6. Sustainability: Chart visualizing Honor Decay.
+         7. Business & Roadmap: Structural diagrams and timeline.
+         This linear yet interactive structure mimics the flow of a pitch deck but allows the user to 'play' with the variables (pricing, voting power) to understand the depth of the system. -->
+    <!-- Visualization & Content Choices: 
+         - Pricing: JS Calculator (Goal: Inform/Compare) - Shows value of NFT membership.
+         - Honor Decay: Line Chart (Chart.js) (Goal: Change/Inform) - Visualizes the concept of metabolism/rust.
+         - Voting Power: JS Calculator (Goal: Relationships) - Demonstrates the formula NFT * Honor.
+         - Business Model: CSS Flexbox Diagram (Goal: Organize) - Inverted pyramid structure.
+         - Roadmap: CSS Timeline (Goal: Change) - Progression over time. 
+         -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+
+<body class="antialiased selection:bg-[#C69C6D] selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-[#FDFCF8]/95 backdrop-blur-sm shadow-sm z-50 border-b border-[#EFEBE0]">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-xl font-bold serif text-[#3A3530]">Re:Village</div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="scrollToSection('hero')"
+                        class="nav-link text-sm font-medium hover:text-[#5D7052] transition-colors">Top</button>
+                    <button onclick="scrollToSection('concept')"
+                        class="nav-link text-sm font-medium hover:text-[#5D7052] transition-colors">Concept</button>
+                    <button onclick="scrollToSection('product')"
+                        class="nav-link text-sm font-medium hover:text-[#5D7052] transition-colors">Stay</button>
+                    <button onclick="scrollToSection('tech')"
+                        class="nav-link text-sm font-medium hover:text-[#5D7052] transition-colors">System</button>
+                    <button onclick="scrollToSection('governance')"
+                        class="nav-link text-sm font-medium hover:text-[#5D7052] transition-colors">DAO</button>
+                    <button onclick="scrollToSection('roadmap')"
+                        class="nav-link text-sm font-medium hover:text-[#5D7052] transition-colors">Future</button>
+                    <a href="index.html"
+                        class="nav-link text-sm font-medium hover:text-[#5D7052] transition-colors border-l pl-6 border-[#EFEBE0]">Official
+                        Site &rarr;</a>
+                </div>
+                <!-- Mobile Menu Button (Simple) -->
+                <button class="md:hidden text-[#3A3530]" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#FDFCF8] border-t border-[#EFEBE0] px-4 py-2 shadow-lg">
+            <button onclick="scrollToSection('hero')" class="block w-full text-left py-2 text-sm">Top</button>
+            <button onclick="scrollToSection('concept')" class="block w-full text-left py-2 text-sm">Concept</button>
+            <button onclick="scrollToSection('product')" class="block w-full text-left py-2 text-sm">Stay</button>
+            <button onclick="scrollToSection('tech')" class="block w-full text-left py-2 text-sm">System</button>
+            <button onclick="scrollToSection('governance')" class="block w-full text-left py-2 text-sm">DAO</button>
+            <button onclick="scrollToSection('roadmap')" class="block w-full text-left py-2 text-sm">Future</button>
+            <a href="index.html"
+                class="block w-full text-left py-2 text-sm font-bold text-[#5D7052] border-t border-[#EFEBE0] mt-2 pt-2">Official
+                Site &rarr;</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero"
+        class="min-h-screen flex items-center justify-center pt-16 bg-[#FDFCF8] relative overflow-hidden">
+        <div
+            class="absolute inset-0 z-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1598155523122-38423bb4d6c1?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
+        </div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div
+                class="mb-4 inline-block px-3 py-1 border border-[#5D7052] text-[#5D7052] text-xs uppercase tracking-widest rounded-full">
+                Pitch Deck Summary</div>
+            <h1 class="text-5xl md:text-7xl font-bold text-[#3A3530] mb-6 tracking-tight leading-tight">
+                Re:Village
+            </h1>
+            <p class="text-xl md:text-2xl text-[#5D7052] serif mb-8 font-light">
+                不可視なテクノロジーで、<br class="md:hidden">野生と利他を取り戻す。
+            </p>
+            <p class="max-w-2xl mx-auto text-[#3A3530]/80 leading-relaxed mb-10">
+                便利さと引き換えに失った「生きる力」と「繋がり」。<br>
+                古民家での圧倒的なアナログ体験と、その裏側で駆動するWeb3の自律分散型村社会。<br>
+                これは、次世代のための社会OS実証実験です。
+            </p>
+            <button onclick="scrollToSection('concept')"
+                class="bg-[#3A3530] text-[#FDFCF8] px-8 py-3 rounded-md hover:bg-[#5D7052] transition-colors duration-300 shadow-lg">
+                Explore the Vision
+            </button>
+        </div>
+    </section>
+
+    <!-- Concept & Philosophy Section -->
+    <section id="concept" class="py-20 bg-[#EFEBE0]/30">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold mb-4 serif text-[#3A3530]">Why Now? & The Solution</h2>
+                    <p class="text-[#3A3530]/70">現代社会の課題と、Re:Villageが提示する「懐かしくて新しい」解決策。</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- The Problem -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-[#3A3530] card-hover">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-3">⚠️</span>
+                            <h3 class="text-xl font-bold serif">The Problem</h3>
+                        </div>
+                        <ul class="space-y-4 text-[#3A3530]/80">
+                            <li class="flex items-start">
+                                <span class="font-bold mr-2">Individual:</span>
+                                <span>デジタル依存による思考停止と身体性の喪失。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-bold mr-2">Society:</span>
+                                <span>金銭による格差と分断。形骸化した民主主義。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-bold mr-2">Local:</span>
+                                <span>放置される限界集落と失われる文化資産。</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- The Solution -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-[#5D7052] card-hover">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-3">🌿</span>
+                            <h3 class="text-xl font-bold serif">The Solution</h3>
+                        </div>
+                        <ul class="space-y-4 text-[#3A3530]/80">
+                            <li class="flex items-start">
+                                <span class="font-bold mr-2 text-[#5D7052]">Offline First:</span>
+                                <span>スマホを預け、薪を割る。圧倒的アナログ体験。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-bold mr-2 text-[#5D7052]">Web3 Inside:</span>
+                                <span>裏側で自律的な村社会(DAO)が駆動するInvisible Tech。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-bold mr-2 text-[#5D7052]">Mission:</span>
+                                <span>"Re-wilding Human" (人間性の再野生化)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product & Pricing Section -->
+    <section id="product" class="py-20 bg-[#FDFCF8]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4 serif text-[#3A3530]">Experience & Pricing</h2>
+                    <p class="text-[#3A3530]/70">
+                        舞台は沖縄県名護市の限界集落。1日1組限定。<br>
+                        「観光」ではなく「関係人口」を作るためのプライシング戦略。
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Image/Vibe Placeholder -->
+                    <div
+                        class="bg-[#EFEBE0] rounded-xl h-96 flex items-center justify-center relative overflow-hidden group">
+                        <!-- CSS Pattern for "Ancient House" Vibe -->
+                        <div
+                            class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#3A3530] to-transparent">
+                        </div>
+                        <div class="text-center p-6 z-10">
+                            <div class="text-6xl mb-4">🛖</div>
+                            <h3 class="text-2xl font-serif text-[#3A3530]">Ancient House</h3>
+                            <p class="text-sm mt-2">Renovated Comfort × Wild Nature</p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Pricing Calculator -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-[#EFEBE0]">
+                        <h3 class="text-xl font-bold mb-6 border-b pb-2">Stay Simulator</h3>
+
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-bold mb-2">Membership Status</label>
+                                <div class="flex bg-[#EFEBE0] rounded-lg p-1">
+                                    <button onclick="setMemberType('general')" id="btn-general"
+                                        class="flex-1 py-2 rounded-md text-sm transition-all bg-white shadow-sm font-bold">General
+                                        (Filter)</button>
+                                    <button onclick="setMemberType('member')" id="btn-member"
+                                        class="flex-1 py-2 rounded-md text-sm transition-all text-[#3A3530]/60">NFT
+                                        Member (Villager)</button>
+                                </div>
+                            </div>
+
+                            <div class="flex space-x-4">
+                                <div class="flex-1">
+                                    <label class="block text-sm font-bold mb-2">Guests</label>
+                                    <select id="guest-count" onchange="calculatePrice()"
+                                        class="w-full p-2 border rounded bg-[#FDFCF8]">
+                                        <option value="2">2 Adults</option>
+                                        <option value="3">3 Adults</option>
+                                        <option value="4">4 Adults</option>
+                                    </select>
+                                </div>
+                                <div class="flex-1">
+                                    <label class="block text-sm font-bold mb-2">Nights</label>
+                                    <input type="number" id="night-count" value="2" min="2" max="30"
+                                        onchange="calculatePrice()" class="w-full p-2 border rounded bg-[#FDFCF8]">
+                                    <p class="text-xs text-red-500 mt-1" id="night-warning" style="display:none;">Min 2
+                                        nights</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-[#3A3530] text-[#FDFCF8] p-6 rounded-lg text-center">
+                                <p class="text-xs uppercase tracking-widest opacity-70 mb-1">Total Price (Tax Inc.)</p>
+                                <p class="text-4xl font-serif font-bold" id="total-price">¥64,000</p>
+                                <p class="text-sm mt-2 opacity-80" id="price-per-person">¥16,000 / person / night</p>
+                            </div>
+
+                            <div id="member-savings"
+                                class="hidden text-center text-[#5D7052] font-bold text-sm bg-[#5D7052]/10 p-2 rounded">
+                                Saved ¥<span id="savings-amount">0</span> compared to General!
+                            </div>
+
+                            <p class="text-xs text-center text-gray-500 mt-2">
+                                *General Pricing includes a premium to filter casual consumption.<br>
+                                *NFT Members benefit from "Appropriate Pricing".
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Invisible Tech Architecture -->
+    <section id="tech" class="py-20 bg-[#3A3530] text-[#FDFCF8]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 serif">The "Invisible" Tech</h2>
+                <p class="opacity-80 max-w-2xl mx-auto">
+                    ユーザーは「木製ブレスレット」をかざすだけ。<br>
+                    メタマスクもシードフレーズも意識させない、徹底した黒子としてのテクノロジー。
+                </p>
+            </div>
+
+            <!-- Architecture Flow Visualization -->
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center relative">
+                <!-- Connecting Line (Desktop) -->
+                <div
+                    class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-[#5D7052]/30 -z-0 transform -translate-y-1/2">
+                </div>
+
+                <!-- Step 1 -->
+                <div
+                    class="bg-[#4A4540] p-8 rounded-xl z-10 relative group hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="w-16 h-16 bg-[#C69C6D] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl shadow-lg shadow-[#C69C6D]/20">
+                        🪵
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">1. No Screens</h3>
+                    <p class="text-sm opacity-70">Guest holds only a Wooden Bracelet (NFC). Smartphone is surrendered.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-[#4A4540] p-8 rounded-xl z-10 relative group hover:-translate-y-2 transition-transform duration-300 cursor-pointer"
+                    onclick="triggerRipple(this)">
+                    <div
+                        class="w-16 h-16 bg-[#5D7052] rounded-full mx-auto mb-6 flex items-center justify-center text-3xl shadow-lg shadow-[#5D7052]/20 relative overflow-hidden">
+                        📱
+                        <div class="absolute inset-0 border-2 border-white/50 rounded-full opacity-0 ripple-effect">
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">2. Touch & Log</h3>
+                    <p class="text-sm opacity-70">Resident scans bracelet. Payment & "Thanks Tip" recorded instantly.
+                        <br><span class="text-[#C69C6D] text-xs">(Click me!)</span></p>
+                </div>
+
+                <!-- Step 3 -->
+                <div
+                    class="bg-[#4A4540] p-8 rounded-xl z-10 relative group hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="w-16 h-16 bg-[#3A3530] border border-[#FDFCF8]/20 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl shadow-lg">
+                        🔗
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">3. On-Chain</h3>
+                    <p class="text-sm opacity-70">Astar Network (zkEVM) + Thirdweb + Supabase handle the logic
+                        invisibly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics & Governance -->
+    <section id="governance" class="py-20 bg-[#FDFCF8]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 serif text-[#3A3530]">Economy & Governance</h2>
+                <p class="text-[#3A3530]/70">「金」ではなく「徳」が巡る経済圏と、貢献者が決める民主主義2.0。</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Dual Token Concept -->
+                <div class="space-y-8">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-[#EFEBE0]">
+                        <h3 class="text-lg font-bold mb-4 flex items-center text-[#C69C6D]">
+                            <span class="mr-2">💰</span> Thanks Tip (Economy)
+                        </h3>
+                        <p class="text-sm text-[#3A3530]/80">
+                            顧客から住民へ送られる感謝の証。地域内通貨として機能し、サービスや物品と交換可能。
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-[#EFEBE0]">
+                        <h3 class="text-lg font-bold mb-4 flex items-center text-[#5D7052]">
+                            <span class="mr-2">🛡️</span> Honor (Virtue)
+                        </h3>
+                        <p class="text-sm text-[#3A3530]/80">
+                            相互評価によってのみ蓄積される信頼スコア(SBT)。<br>
+                            <strong class="text-[#3A3530]">譲渡不可。お金で買えない価値。</strong>
+                        </p>
+                    </div>
+
+                    <!-- Voting Power Calculator -->
+                    <div class="bg-[#EFEBE0]/50 p-6 rounded-xl border border-[#C69C6D]/30">
+                        <h3 class="text-lg font-bold mb-4 serif">Democracy 2.0 Calculator</h3>
+                        <p class="text-xs mb-4 opacity-70">Formula: Power = (NFT * 1) * (1 + log10(Honor))</p>
+
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs font-bold mb-1">NFT Count (Money)</label>
+                                <input type="number" id="calc-nft" value="1" min="1" class="w-full p-2 rounded border"
+                                    oninput="updateVotingPower()">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1">Honor Score (Virtue)</label>
+                                <input type="range" id="calc-honor" min="1" max="1000" value="10" class="w-full"
+                                    oninput="updateVotingPower()">
+                                <div class="text-right text-xs" id="honor-val">10</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded text-center">
+                            <span class="block text-xs uppercase text-gray-500">Your Voting Power</span>
+                            <span class="text-3xl font-bold text-[#5D7052]" id="voting-result">2.00</span>
+                            <p class="text-xs text-gray-400 mt-1">"徳"が高い人の声が、お金より大きくなる設計</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Honor Decay Chart -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-[#EFEBE0]">
+                    <h3 class="text-lg font-bold mb-2">Metabolism (新陳代謝)</h3>
+                    <p class="text-xs text-[#3A3530]/60 mb-6">権力の腐敗を防ぐ減衰システム。会員は1年来ないとHonorが減る (No Stay, No Honor)。</p>
+
+                    <div class="chart-container">
+                        <canvas id="decayChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-xs text-center text-gray-400">
+                        * シミュレーション: 12ヶ月間活動がない場合のHonor減少推移
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model & Roadmap -->
+    <section id="roadmap" class="py-20 bg-[#3A3530] text-[#FDFCF8]">
+        <div class="container mx-auto px-4">
+            <!-- Business Model Diagram -->
+            <div class="mb-20">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold mb-4 serif">Company as a Servant</h2>
+                    <p class="opacity-80">会社は村のオーナーではなく、下支えする奉仕者。</p>
+                </div>
+
+                <div class="max-w-2xl mx-auto flex flex-col space-y-2">
+                    <!-- Top: Nature/Culture -->
+                    <div
+                        class="bg-[#5D7052] p-6 rounded-t-xl text-center shadow-lg transform translate-y-2 z-20 w-11/12 mx-auto">
+                        <h3 class="font-bold text-lg">Re:Village (Nature / Culture)</h3>
+                        <p class="text-xs opacity-80">Value Source / Host</p>
+                    </div>
+                    <!-- Middle: Residents -->
+                    <div
+                        class="bg-[#C69C6D] p-6 text-center shadow-lg transform translate-y-1 z-10 w-full mx-auto rounded-md">
+                        <h3 class="font-bold text-lg">Residents (Co-owners)</h3>
+                        <p class="text-xs opacity-80">Living / Acting / Governing</p>
+                    </div>
+                    <!-- Bottom: Company -->
+                    <div
+                        class="bg-[#4A4540] p-6 rounded-b-xl text-center shadow-lg border-t-2 border-dashed border-[#FDFCF8]/30 w-10/12 mx-auto">
+                        <h3 class="font-bold text-lg">Operating Company</h3>
+                        <p class="text-xs opacity-80">Servant / OS Provider / Treasury Manager</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roadmap Timeline -->
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-10 text-center serif">Roadmap</h2>
+                <div
+                    class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-[#5D7052] before:via-[#C69C6D] before:to-transparent">
+
+                    <!-- Phase 1 -->
+                    <div
+                        class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div
+                            class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#3A3530] bg-[#5D7052] shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 text-white font-bold text-xs z-10">
+                            P1
+                        </div>
+                        <div
+                            class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-[#4A4540] p-6 rounded-lg shadow-md border-l-4 border-[#5D7052]">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <h3 class="font-bold text-[#FDFCF8]">2025-2026: PoC in Okinawa</h3>
+                            </div>
+                            <p class="text-sm opacity-80">Re:Village 第1号拠点の立ち上げ。Web3システムの社会実装。</p>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div
+                        class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div
+                            class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#3A3530] bg-[#C69C6D] shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 text-[#3A3530] font-bold text-xs z-10">
+                            P2
+                        </div>
+                        <div
+                            class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-[#4A4540] p-6 rounded-lg shadow-md border-l-4 border-[#C69C6D]">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <h3 class="font-bold text-[#FDFCF8]">2027: Village OS</h3>
+                            </div>
+                            <p class="text-sm opacity-80">予約・決済・DAO・NFCシステムをパッケージ化。</p>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div
+                        class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div
+                            class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#3A3530] bg-[#FDFCF8] shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 text-[#3A3530] font-bold text-xs z-10">
+                            P3
+                        </div>
+                        <div
+                            class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-[#4A4540] p-6 rounded-lg shadow-md border-l-4 border-[#FDFCF8]">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <h3 class="font-bold text-[#FDFCF8]">2028-: National Rollout</h3>
+                            </div>
+                            <p class="text-sm opacity-80">全国の限界集落へ展開。「Re:Village Economic Zone」の確立。</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-24 bg-[#EFEBE0]">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-6 serif text-[#3A3530]">Join the Village.</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto text-[#3A3530]/80">
+                投資家、エンジニア、そして最初の100人の村人へ。<br>
+                この社会実験の共犯者になりませんか。
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button
+                    class="bg-[#3A3530] text-[#FDFCF8] px-8 py-4 rounded-md font-bold hover:bg-[#5D7052] transition-colors shadow-lg">
+                    Contact CEO Tomoya
+                </button>
+                <button
+                    class="bg-white text-[#3A3530] border border-[#3A3530] px-8 py-4 rounded-md font-bold hover:bg-[#EFEBE0] transition-colors shadow-sm">
+                    Read Whitepaper
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#3A3530] text-[#FDFCF8] py-8 text-center border-t border-[#4A4540]">
+        <p class="text-sm opacity-50">&copy; 2026 Re:Village Project. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Navigation Logic ---
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            // Close mobile menu if open
+            const menu = document.getElementById('mobile-menu');
+            if (!menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // --- Pricing Calculator Logic ---
+        let currentMemberType = 'general'; // general or member
+
+        function setMemberType(type) {
+            currentMemberType = type;
+            // Update UI buttons
+            const btnGeneral = document.getElementById('btn-general');
+            const btnMember = document.getElementById('btn-member');
+            const savingsDiv = document.getElementById('member-savings');
+
+            if (type === 'general') {
+                btnGeneral.classList.add('bg-white', 'shadow-sm', 'font-bold');
+                btnGeneral.classList.remove('text-[#3A3530]/60');
+                btnMember.classList.remove('bg-white', 'shadow-sm', 'font-bold');
+                btnMember.classList.add('text-[#3A3530]/60');
+                savingsDiv.classList.add('hidden');
+            } else {
+                btnMember.classList.add('bg-white', 'shadow-sm', 'font-bold');
+                btnMember.classList.remove('text-[#3A3530]/60');
+                btnGeneral.classList.remove('bg-white', 'shadow-sm', 'font-bold');
+                btnGeneral.classList.add('text-[#3A3530]/60');
+                savingsDiv.classList.remove('hidden');
+            }
+            calculatePrice();
+        }
+
+        function calculatePrice() {
+            const guests = parseInt(document.getElementById('guest-count').value);
+            let nights = parseInt(document.getElementById('night-count').value);
+            const nightWarning = document.getElementById('night-warning');
+
+            // Enforce min 2 nights logic visually
+            if (nights < 2) {
+                nightWarning.style.display = 'block';
+                // nights = 2; // Can force or just warn. Let's force calc as 2 for display.
+            } else {
+                nightWarning.style.display = 'none';
+            }
+
+            // Pricing Logic based on the Report
+            // Member: Short(2)=24k, Std(3-7)=18k, Long(8+)=12k
+            // General: Short(2)=32k, Std(3-7)=24k, Long(8+)=16k
+
+            let pricePerPersonPerNight = 0;
+
+            if (currentMemberType === 'member') {
+                if (nights <= 2) pricePerPersonPerNight = 37500;
+                else if (nights <= 7) pricePerPersonPerNight = 28000;
+                else pricePerPersonPerNight = 19000;
+            } else {
+                // General
+                if (nights <= 2) pricePerPersonPerNight = 50000;
+                else if (nights <= 7) pricePerPersonPerNight = 37500;
+                else pricePerPersonPerNight = 25000;
+            }
+
+            const total = pricePerPersonPerNight * guests * nights;
+
+            // Display Update
+            document.getElementById('total-price').innerText = '¥' + total.toLocaleString();
+            document.getElementById('price-per-person').innerText = '¥' + pricePerPersonPerNight.toLocaleString() + ' / person / night';
+
+            // Calculate comparison
+            if (currentMemberType === 'member') {
+                // Calc what General would pay
+                let generalRate = 0;
+                if (nights <= 2) generalRate = 50000;
+                else if (nights <= 7) generalRate = 37500;
+                else generalRate = 25000;
+
+                const generalTotal = generalRate * guests * nights;
+                const savings = generalTotal - total;
+                document.getElementById('savings-amount').innerText = savings.toLocaleString();
+            }
+        }
+
+        // --- Voting Power Calculator Logic ---
+        function updateVotingPower() {
+            const nftCount = parseInt(document.getElementById('calc-nft').value) || 0;
+            const honorScore = parseInt(document.getElementById('calc-honor').value) || 1;
+
+            // Update range display
+            document.getElementById('honor-val').innerText = honorScore;
+
+            // Formula: Voting Power = (NFT * 1) * (1 + log10(Honor))
+            // Ensure Honor is at least 1 to avoid log(0) or neg
+            const h = Math.max(1, honorScore);
+            const power = (nftCount * 1) * (1 + Math.log10(h));
+
+            document.getElementById('voting-result').innerText = power.toFixed(2);
+        }
+
+        // --- Tech Animation ---
+        function triggerRipple(element) {
+            const ripple = element.querySelector('.ripple-effect');
+            if (ripple) {
+                ripple.classList.remove('animate-ripple');
+                void ripple.offsetWidth; // trigger reflow
+                ripple.classList.add('animate-ripple');
+
+                // Also simulate "success" log
+                setTimeout(() => {
+                    const icon = element.querySelector('.text-3xl');
+                    const original = icon.innerText;
+                    icon.innerText = "✨";
+                    setTimeout(() => icon.innerText = original, 1000);
+                }, 500);
+            }
+        }
+
+        // --- Chart.js: Honor Decay ---
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initial calc
+            calculatePrice();
+            updateVotingPower();
+
+            // Chart Initialization
+            const ctx = document.getElementById('decayChart').getContext('2d');
+
+            // Data generation
+            const months = Array.from({ length: 13 }, (_, i) => i); // 0 to 12
+            // Member: Stable for 12 months, then drop? No, report says "starts decreasing after 1 year". 
+            // Let's visualize a Member who hasn't visited for 12 months vs a Resident who stops acting.
+            // Resident: Monthly decay logic (rolling average).
+
+            const residentData = [100];
+            let currentRes = 100;
+            for (let i = 1; i <= 12; i++) {
+                // If inactive, drops fast (e.g. 30% month)
+                currentRes = currentRes * 0.7;
+                residentData.push(currentRes);
+            }
+
+            const memberData = [100];
+            // Member stays 100 for 12 months (if visited at month 0)
+            for (let i = 1; i <= 12; i++) {
+                memberData.push(100);
+            }
+            // If extended to 13+ months, it would drop. Chart shows "1 Year Inactivity".
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months.map(m => `Month ${m}`),
+                    datasets: [
+                        {
+                            label: 'Resident (Inactive)',
+                            data: residentData,
+                            borderColor: '#C69C6D',
+                            backgroundColor: 'rgba(198, 156, 109, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Member (No Visit)',
+                            data: memberData,
+                            borderColor: '#5D7052',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            tension: 0,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    family: "'Noto Sans JP', sans-serif"
+                                }
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function (context) {
+                                    return context.dataset.label + ': ' + Math.round(context.raw) + ' Honor';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 110,
+                            title: {
+                                display: true,
+                                text: 'Honor Score'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
