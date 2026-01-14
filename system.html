@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System & Governance | Re:Village</title>
+    <meta name="description" content="Re:Villageの経済圏と統治システムの詳細。信頼加重型民主主義の設計図。">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Inter:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Simple Nav -->
+    <nav style="padding: 20px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <a href="index.html"
+            style="text-decoration: none; color: var(--color-text); font-family: var(--font-sans); font-weight: 500;">
+            ← Back to Home
+        </a>
+    </nav>
+
+    <!-- Section 1: Hero & Philosophy -->
+    <header class="system-hero">
+        <div class="container narrow">
+            <h1 class="system-title fade-in">System & Governance</h1>
+            <p class="system-lead fade-in">
+                金銭的価値と、信頼による評価を分離した<br>『持続可能な自治都市』の設計図
+            </p>
+            <div style="margin-top: 40px; text-align: left;" class="fade-in">
+                <p style="font-family: var(--font-serif); font-size: 1.1rem; line-height: 2.2;">
+                    Re:Villageは、お金（Tip）と権力（Honor）を明確に分けることで、金持ちによる支配を防ぎ、コミュニティへの貢献者が報われる「信頼加重型民主主義」を採用しています。
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 2: 3 Core Elements -->
+    <section class="section-padding" style="background: #fafafa;">
+        <div class="container">
+            <h2 class="section-title fade-in">3 Core Elements</h2>
+            <div class="governance-elements fade-in">
+                <!-- NFT -->
+                <div class="element-card">
+                    <span class="element-icon">🎫</span>
+                    <h3 class="element-title">The Passport (NFT)</h3>
+                    <p class="element-desc">
+                        入村パスポート ＆ 基礎投票権 (1票)。<br>
+                        市場売買可能。<br>
+                        あくまでコミュニティへの「入り口」です。
+                    </p>
+                </div>
+                <!-- Thanks Tip -->
+                <div class="element-card">
+                    <span class="element-icon">💰</span>
+                    <h3 class="element-title">The Economy (Tip)</h3>
+                    <p class="element-desc">
+                        感謝の対価としてのチップ。<br>
+                        <strong>ゲストから住民への一方通行。</strong><br>
+                        <span style="color: #e53e3e; font-weight: bold;">Tipで権力（Honor）は買えません。</span>
+                    </p>
+                </div>
+                <!-- Honor -->
+                <div class="element-card" style="border-top: 4px solid var(--color-accent-wood);">
+                    <span class="element-icon">🛡️</span>
+                    <h3 class="element-title" style="color: var(--color-accent-wood);">The Trust (Honor)</h3>
+                    <p class="element-desc">
+                        貢献と信頼のスコア。<br>
+                        <strong>譲渡不可 (SBT)。</strong><br>
+                        住民からの評価でのみ蓄積され、ガバナンス力を決定します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Visualizing the Flows -->
+    <section class="section-padding">
+        <div class="container narrow">
+            <h2 class="section-title fade-in">Visualizing the Flows</h2>
+
+            <!-- Economy Layer -->
+            <div class="flow-diagram-container fade-in">
+                <h3 class="flow-title">A. The Economy Layer (Money Flow)</h3>
+                <p style="text-align: center; margin-bottom: 30px; opacity: 0.8;">「感謝をお金に変えて生活を回す」</p>
+
+                <div class="flow-row">
+                    <div class="flow-node guest">
+                        Guest<br><span style="font-size:0.8rem; font-weight:normal;">(NFT Member)</span>
+                    </div>
+
+                    <div class="flow-arrow-container">
+                        <div class="flow-label money">Thanks Tip ($)</div>
+                        <div class="flow-arrow-line"></div>
+                        <div class="flow-label" style="font-size: 0.7rem; opacity: 0.6;">One-way</div>
+                    </div>
+
+                    <div class="flow-node resident">
+                        Resident<br><span style="font-size:0.8rem; font-weight:normal;">(Villager)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Layer -->
+            <div class="flow-diagram-container fade-in" style="border-left: 4px solid var(--color-accent-wood);">
+                <h3 class="flow-title" style="color: var(--color-accent-wood);">B. The Trust Layer (Governance Flow)
+                </h3>
+                <p style="text-align: center; margin-bottom: 30px; opacity: 0.8;">「カネでは買えない、評価の連鎖」</p>
+
+                <!-- 1. Resident Mutual -->
+                <div class="flow-row" style="margin-bottom: 40px;">
+                    <div class="flow-node resident">Resident A</div>
+
+                    <div class="flow-arrow-container">
+                        <div class="flow-label honor">Mutual Honor (⭐)</div>
+                        <div class="flow-arrow-line" style="background: var(--color-accent-wood);">
+                            <style>
+                                .flow-arrow-line.double::before {
+                                    content: '';
+                                    position: absolute;
+                                    left: 0;
+                                    top: -4px;
+                                    border-top: 5px solid transparent;
+                                    border-bottom: 5px solid transparent;
+                                    border-right: 8px solid var(--color-accent-wood);
+                                }
+                            </style>
+                        </div>
+                        <script>
+                            // Add dual arrow style dynamically or inline style above
+                            document.currentScript.previousElementSibling.classList.add('double');
+                            document.currentScript.previousElementSibling.style.background = '#C69C6D';
+                            // Fix arrow color
+                            const style = document.createElement('style');
+                            style.innerHTML = `.flow-arrow-line.double::after { border-left-color: #C69C6D; }`;
+                            document.head.appendChild(style);
+                        </script>
+                    </div>
+
+                    <div class="flow-node resident">Resident B</div>
+                </div>
+
+                <!-- 2. Guest to Resident (Denied) -->
+                <div class="flow-row" style="opacity: 0.6; position: relative;">
+                    <div class="flow-node guest">Guest</div>
+
+                    <div class="flow-arrow-container">
+                        <div class="flow-label">Honor Log</div>
+                        <div class="flow-arrow-line dashed"></div>
+                    </div>
+
+                    <div class="flow-node resident">Resident</div>
+
+                    <div class="flow-denied">×</div>
+                </div>
+                <p style="text-align: center; font-size: 0.8rem; color: #e53e3e; margin-top: 10px;">
+                    ゲストはお金（Tip）を与えられますが、権力（Honor）を与えることはできません。
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 4: Rank System -->
+    <section class="section-padding" style="background: #fafafa;">
+        <div class="container">
+            <h2 class="section-title fade-in">Trust Ranks</h2>
+            <div class="rank-table-wrapper fade-in">
+                <table class="rank-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>条件 (Honor)</th>
+                            <th>投票力 (係数)</th>
+                            <th>特権</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Newcomer</strong></td>
+                            <td>0 - 99</td>
+                            <td align="center">x 1.0</td>
+                            <td>基本アクセス権のみ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Villager</strong></td>
+                            <td>100 - 499</td>
+                            <td align="center">x 1.2</td>
+                            <td>議論参加、予約優先(小)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Guardian</strong></td>
+                            <td>500 - 999</td>
+                            <td align="center" style="color: var(--color-accent-wood); font-weight:bold;">x 1.5</td>
+                            <td><strong>プロジェクト起案権</strong>、限定エリア</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Elder</strong></td>
+                            <td>1000+</td>
+                            <td align="center" style="color: var(--color-accent-green); font-weight:bold;">x 2.0</td>
+                            <td>優先審議権、拒否権</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Governance Logic -->
+    <section class="section-padding">
+        <div class="container narrow">
+            <h2 class="section-title fade-in">Governance Logic</h2>
+            <div class="governance-cycle fade-in">
+                <!-- Step 1 -->
+                <div class="cycle-step">
+                    <span class="step-icon">📝</span>
+                    <h3 class="step-title">Step 1: Proposal</h3>
+                    <span class="step-sub">Guardian以上のみ可能</span>
+                    <p class="step-desc">質の高い提案のみが<br>テーブルに乗る</p>
+                </div>
+
+                <div class="cycle-arrow">→</div>
+
+                <!-- Step 2 -->
+                <div class="cycle-step featured">
+                    <div class="weight-comparison">
+                        <div class="weight-circle weight-small">x1</div>
+                        <span class="weight-vs">vs</span>
+                        <div class="weight-circle weight-big">x2</div>
+                    </div>
+                    <h3 class="step-title">Step 2: Weighted Voting</h3>
+                    <span class="step-sub">Honorによる重み付け</span>
+                    <p class="step-desc">数は力ではない。<br>信頼が力になる。</p>
+                </div>
+
+                <div class="cycle-arrow">→</div>
+
+                <!-- Step 3 -->
+                <div class="cycle-step">
+                    <span class="step-icon">✅</span>
+                    <h3 class="step-title">Step 3: Decision</h3>
+                    <span class="step-sub">総信頼量で可決</span>
+                    <p class="step-desc">コミュニティの総意として<br>実装へ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p style="margin-bottom: 20px;">
+                <a href="#" class="btn btn-primary" style="max-width: 300px;">Join Discord Community</a>
+            </p>
+            <p class="copyright">&copy; 2026 Re:Village. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
