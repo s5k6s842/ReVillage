@@ -175,6 +175,8 @@
     justify-content: center;
     width: 100%;
     margin-top: 0;
+    color: var(--color-text);
+    /* Override white text from styles.css */
 }
 
 .tag-label {
