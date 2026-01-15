@@ -914,3 +914,245 @@ h3 {
     color: #2D3748;
     line-height: 1.6;
 }
+
+/* Tech Page Specifics */
+.font-mono {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.tech-hero {
+    padding: 160px 0 80px;
+    background-color: #2D3748; /* Darker technical background */
+    color: var(--color-white);
+    text-align: center;
+}
+
+.tech-title {
+    font-size: 2.5rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.tech-lead {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.9;
+    font-family: var(--font-sans);
+}
+
+/* Tech Stack Grid */
+.tech-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.tech-card {
+    background: var(--color-white);
+    padding: 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.tech-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.tech-head {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 10px;
+}
+
+.tech-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.tech-name {
+    font-weight: 700;
+    font-family: var(--font-sans);
+    color: var(--color-accent-blue);
+}
+
+.tech-reason {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+/* Architecture Diagram */
+.arch-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.arch-layer {
+    background: #F7FAFC;
+    border: 1px dashed #CBD5E0;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.layer-label {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--color-white);
+    padding: 0 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text-light);
+    border: 1px solid #CBD5E0;
+    border-radius: 4px;
+}
+
+.arch-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.arch-box {
+    background: var(--color-white);
+    border: 1px solid #E2E8F0;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-accent-blue);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.arch-arrow {
+    color: #A0AEC0;
+    font-weight: bold;
+}
+
+/* Roadmap Timeline */
+.roadmap-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 30px;
+}
+
+.roadmap-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #E2E8F0;
+}
+
+.roadmap-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.roadmap-marker {
+    position: absolute;
+    left: -35px; /* (30px padding + 5px extra) */
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-base);
+    border: 2px solid #CBD5E0;
+    z-index: 2;
+}
+
+.roadmap-item.completed .roadmap-marker {
+    background: #48BB78; /* Green */
+    border-color: #48BB78;
+}
+
+.roadmap-item.progress .roadmap-marker {
+    background: #ED8936; /* Orange */
+    border-color: #ED8936;
+}
+
+.phase-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.phase-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: var(--font-sans);
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.completed {
+    color: #276749;
+    background: #C6F6D5;
+    border: 1px solid #48BB78;
+}
+
+.status-badge.progress {
+    color: #9C4221;
+    background: #FEEBC8;
+    border: 1px solid #ED8936;
+}
+
+.status-badge.planned {
+    color: #4A5568;
+    background: #EDF2F7;
+    border: 1px solid #CBD5E0;
+}
+
+.roadmap-tasks {
+    list-style: none;
+    padding-left: 0;
+}
+
+.roadmap-tasks li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+}
+
+.roadmap-tasks li::before {
+    content: '-';
+    position: absolute;
+    left: 0;
+    color: #CBD5E0;
+}
+
+@media (max-width: 600px) {
+    .arch-content {
+        flex-direction: column;
+    }
+    .arch-arrow {
+        transform: rotate(90deg);
+    }
+}

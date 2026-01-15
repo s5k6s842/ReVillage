@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology & Roadmap | Re:Village</title>
+    <meta name="description" content="Re:Villageを支える技術スタックと開発ロードマップ。Astar Networkを活用したシステムアーキテクチャ。">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Inter:wght@300;400;700&family=Courier+Prime&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional inline tweaks for Courier Prime if not loaded via google fonts strictly as mono */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        .font-mono {
+            font-family: 'Courier Prime', monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Simple Nav -->
+    <nav style="padding: 20px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <a href="index.html"
+            style="text-decoration: none; color: var(--color-text); font-family: var(--font-sans); font-weight: 500;">
+            ← Back to Home
+        </a>
+    </nav>
+
+    <!-- Section A: Hero Area -->
+    <header class="tech-hero">
+        <div class="container narrow">
+            <h1 class="tech-title fade-in">Under the Hood</h1>
+            <p class="tech-lead fade-in">
+                Re:Villageを支える技術と、開発の軌跡。<br>
+                私たちは「不可視なテクノロジー」を実現するために、信頼性の高い最新のWeb3スタックを採用しています。<br>
+                現在の進捗状況と、システムアーキテクチャをここで公開します。
+            </p>
+        </div>
+    </header>
+
+    <!-- Section B: Tech Stack -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title fade-in">Tech Stack</h2>
+            <div class="tech-stack-grid fade-in">
+                <!-- Astar -->
+                <div class="tech-card">
+                    <div class="tech-head">
+                        <span class="tech-icon">⛓️</span>
+                        <span class="tech-name">Astar Network (zkEVM)</span>
+                    </div>
+                    <p class="tech-reason">
+                        日本発のパブリックチェーン。<br>
+                        高い信頼性と企業の採用実績、そして低コストなトランザクションを実現。
+                    </p>
+                </div>
+                <!-- Hardhat -->
+                <div class="tech-card">
+                    <div class="tech-head">
+                        <span class="tech-icon">👷</span>
+                        <span class="tech-name">Hardhat</span>
+                    </div>
+                    <p class="tech-reason">
+                        業界標準のスマートコントラクト開発環境。<br>
+                        堅牢なテストとデプロイフローを構築。
+                    </p>
+                </div>
+                <!-- Frontend -->
+                <div class="tech-card">
+                    <div class="tech-head">
+                        <span class="tech-icon">🌈</span>
+                        <span class="tech-name">RainbowKit + Next.js</span>
+                    </div>
+                    <p class="tech-reason">
+                        初心者でも使いやすいウォレット接続UIと、高速なdApp体験を提供。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section C: System Architecture -->
+    <section class="section-padding" style="background: #fafafa;">
+        <div class="container">
+            <h2 class="section-title fade-in">System Architecture</h2>
+            <div class="arch-diagram fade-in">
+
+                <!-- Layer 1 -->
+                <div class="arch-layer">
+                    <span class="layer-label">Layer 1: User & Interface</span>
+                    <div class="arch-content">
+                        <div class="arch-box">User / Member</div>
+                        <div class="arch-arrow">↔</div>
+                        <div class="arch-box">Wallet (RainbowKit)</div>
+                        <div class="arch-arrow">↔</div>
+                        <div class="arch-box">Web Frontend</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; color: #A0AEC0; font-size: 1.5rem;">⬇</div>
+
+                <!-- Layer 2 -->
+                <div class="arch-layer">
+                    <span class="layer-label">Layer 2: Application (Off-Chain)</span>
+                    <div class="arch-content">
+                        <div class="arch-box">Web Frontend</div>
+                        <div class="arch-arrow">↔</div>
+                        <div class="arch-box">Indexer / API</div>
+                        <div class="arch-arrow">↔</div>
+                        <div class="arch-box">Database</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; color: #A0AEC0; font-size: 1.5rem;">⬇</div>
+
+                <!-- Layer 3 -->
+                <div class="arch-layer" style="border-color: #90CDF4; background: #EBF8FF;">
+                    <span class="layer-label" style="color: #2B6CB0; border-color: #90CDF4;">Layer 3: Blockchain (Astar
+                        Network)</span>
+                    <div class="arch-content" style="display: block;">
+                        <ul style="list-style: none; padding: 0; text-align: center;">
+                            <li style="margin-bottom: 10px;">
+                                <span class="arch-box" style="border-color: #4299E1;">1. Passport NFT (ERC-721)</span>
+                            </li>
+                            <li style="margin-bottom: 10px;">
+                                <span class="arch-box" style="border-color: #4299E1;">2. Honor SBT
+                                    (Non-Transferable)</span>
+                            </li>
+                            <li>
+                                <span class="arch-box" style="border-color: #4299E1;">3. Governance Logic</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section D: Roadmap -->
+    <section class="section-padding">
+        <div class="container narrow">
+            <h2 class="section-title fade-in">Development Roadmap</h2>
+            <div class="roadmap-timeline fade-in">
+                <div class="roadmap-line"></div>
+
+                <!-- Phase 1 -->
+                <div class="roadmap-item completed">
+                    <div class="roadmap-marker"></div>
+                    <div class="phase-header">
+                        <h3 class="phase-title">Phase 1: Architecture & Setup</h3>
+                        <span class="status-badge completed">✅ COMPLETED</span>
+                    </div>
+                    <ul class="roadmap-tasks">
+                        <li>システム要件定義</li>
+                        <li>技術スタック選定 (Astar, Hardhat)</li>
+                        <li>開発環境の構築</li>
+                    </ul>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="roadmap-item progress">
+                    <div class="roadmap-marker"></div>
+                    <div class="phase-header">
+                        <h3 class="phase-title">Phase 2: Smart Contract Dev</h3>
+                        <span class="status-badge progress">🔄 IN PROGRESS</span>
+                    </div>
+                    <ul class="roadmap-tasks">
+                        <li>Passport NFTの実装</li>
+                        <li>Honor SBT (譲渡不可トークン) のロジック構築</li>
+                        <li>テストネット(zKyoto/Amoy)へのデプロイ</li>
+                    </ul>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-marker"></div>
+                    <div class="phase-header">
+                        <h3 class="phase-title">Phase 3: Frontend Integration</h3>
+                        <span class="status-badge planned">📅 PLANNED</span>
+                    </div>
+                    <ul class="roadmap-tasks">
+                        <li>RainbowKitによるウォレット接続</li>
+                        <li>投票・Tip機能のUI実装</li>
+                        <li>インデクサー連携</li>
+                    </ul>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-marker"></div>
+                    <div class="phase-header">
+                        <h3 class="phase-title">Phase 4: Mainnet Launch</h3>
+                        <span class="status-badge planned">📅 FUTURE</span>
+                    </div>
+                    <ul class="roadmap-tasks">
+                        <li>セキュリティ監査</li>
+                        <li>Astarメインネットへのデプロイ</li>
+                        <li>ジェネシスメンバー募集開始</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Re:Village</div>
+            <p class="copyright">&copy; 2026 Re:Village. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
