@@ -168,6 +168,13 @@
     z-index: 10;
     max-width: 800px;
     margin: 0 auto;
+    /* Fix layout collapse */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0;
 }
 
 .tag-label {
