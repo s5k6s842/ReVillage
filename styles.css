@@ -145,7 +145,7 @@ h3 {
     opacity: 0.9;
     border-right: 1px solid rgba(255, 255, 255, 0.5);
     padding-right: 20px;
-    height: 200px;
+    height: 480px;
 }
 
 .scroll-indicator {
@@ -724,6 +724,7 @@ h3 {
         border-bottom: none;
     }
 }
+
 /* Governance Cycle Diagram */
 .governance-cycle {
     display: flex;
@@ -737,7 +738,7 @@ h3 {
     background: var(--color-white);
     padding: 30px 20px;
     border-radius: 8px;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     text-align: center;
     flex: 1;
     max-width: 250px;
@@ -791,7 +792,8 @@ h3 {
     align-items: center;
     gap: 10px;
     margin-bottom: 15px;
-    height: 50px; /* fixed height for alignment */
+    height: 50px;
+    /* fixed height for alignment */
 }
 
 .weight-vs {
@@ -808,7 +810,7 @@ h3 {
     color: white;
     font-weight: 700;
     font-size: 0.7rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .weight-small {
@@ -829,7 +831,7 @@ h3 {
         flex-direction: column;
         gap: 20px;
     }
-    
+
     .cycle-arrow {
         transform: rotate(90deg);
     }
@@ -848,13 +850,13 @@ h3 {
     padding: 30px 20px;
     border-radius: 6px;
     text-align: center;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
 }
 
 .actor-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .actor-icon {
@@ -922,7 +924,8 @@ h3 {
 
 .tech-hero {
     padding: 160px 0 80px;
-    background-color: #2D3748; /* Darker technical background */
+    background-color: #2D3748;
+    /* Darker technical background */
     color: var(--color-white);
     text-align: center;
 }
@@ -955,20 +958,20 @@ h3 {
     background: var(--color-white);
     padding: 30px;
     border-radius: 4px;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
 }
 
 .tech-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .tech-head {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     padding-bottom: 10px;
 }
 
@@ -1036,7 +1039,7 @@ h3 {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--color-accent-blue);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .arch-arrow {
@@ -1068,7 +1071,8 @@ h3 {
 
 .roadmap-marker {
     position: absolute;
-    left: -35px; /* (30px padding + 5px extra) */
+    left: -35px;
+    /* (30px padding + 5px extra) */
     top: 5px;
     width: 12px;
     height: 12px;
@@ -1079,12 +1083,14 @@ h3 {
 }
 
 .roadmap-item.completed .roadmap-marker {
-    background: #48BB78; /* Green */
+    background: #48BB78;
+    /* Green */
     border-color: #48BB78;
 }
 
 .roadmap-item.progress .roadmap-marker {
-    background: #ED8936; /* Orange */
+    background: #ED8936;
+    /* Orange */
     border-color: #ED8936;
 }
 
@@ -1152,6 +1158,7 @@ h3 {
     .arch-content {
         flex-direction: column;
     }
+
     .arch-arrow {
         transform: rotate(90deg);
     }
