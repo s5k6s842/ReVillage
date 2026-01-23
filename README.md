@@ -15,6 +15,31 @@
 ## 💡 Key Features (Village OS)
 本プロジェクトでは、物理的な宿泊施設の運営に加え、以下のシステム群（Village OS）を開発・運用します。
 
+### 0. 候補地
+
+#### 広島県
+
+* [No.372](https://mihara-c34204.akiya-athome.jp/bukken/detail/buy/40884) : 広島県三原市大和町和木
+* [No.390](https://mihara-c34204.akiya-athome.jp/bukken/detail/buy/43929) : 広島県三原市久井町坂井原
+* [No.215](https://takehara-c34203.akiya-athome.jp/bukken/detail/buy/43751) : 広島県竹原市塩町３丁目
+* [No.342](https://mihara-c34204.akiya-athome.jp/bukken/detail/buy/42376) : 広島県三原市大和町椋梨
+* [No.335](https://mihara-c34204.akiya-athome.jp/bukken/detail/buy/42372) : 広島県三原市須波１丁目
+* [No.325](https://mihara-c34204.akiya-athome.jp/bukken/detail/buy/42364) : 広島県三原市大和町萩原
+
+#### 岡山県
+
+* [中古住宅](https://soja-c33208.akiya-athome.jp/bukken/detail/buy/44408) : 岡山県総社市新本
+* [山市林田　平屋一軒家](https://tsuyama-c33203.akiya-athome.jp/bukken/detail/buy/44253) : 岡山県津山市林田
+* [No.248 新見市哲多町成松](https://niimi-c33210.akiya-athome.jp/bukken/detail/buy/44195) : 岡山県新見市哲多町成松
+* [MY034 　美咲町王子](https://misaki-t33666.akiya-athome.jp/bukken/detail/buy/44180) : 岡山県久米郡美咲町王子
+* [笠岡市空き家バンクNo.697](https://kasaoka-c33205.akiya-athome.jp/bukken/detail/buy/44047) : 岡山県笠岡市大宜
+* [中古住宅](https://wake-t33346.akiya-athome.jp/bukken/detail/buy/43762) : 岡山県和気郡和気町父井原
+* [中古住宅](https://wake-t33346.akiya-athome.jp/bukken/detail/buy/43715) : 岡山県和気郡和気町岩戸
+* [【336】上田西](https://kibichuo-t33681.akiya-athome.jp/bukken/detail/buy/43491) : 岡山県加賀郡吉備中央町上田西
+* [離れ、倉庫2棟付き中古戸建て](https://wake-t33346.akiya-athome.jp/bukken/detail/buy/43000) : 岡山県和気郡和気町保曽
+* [里庄町大字里見中古戸建](https://satosho-t33445.akiya-athome.jp/bukken/detail/buy/42878) : 
+
+
 ### 1. Membership NFT System
 * **概要:** 宿泊優先権、DAO参加権、デジタルキー機能を内包したNFT会員証。
 * **目的:** コミュニティの質を担保し、持続可能な収益モデル（スモールマス戦略）を確立する。
