@@ -38,6 +38,7 @@
 * [【336】上田西](https://kibichuo-t33681.akiya-athome.jp/bukken/detail/buy/43491) : 岡山県加賀郡吉備中央町上田西
 * [離れ、倉庫2棟付き中古戸建て](https://wake-t33346.akiya-athome.jp/bukken/detail/buy/43000) : 岡山県和気郡和気町保曽
 * [里庄町大字里見中古戸建](https://satosho-t33445.akiya-athome.jp/bukken/detail/buy/42878) : 
+* [奈義町西原戸建](https://nagi-t33623.akiya-athome.jp/bukken/detail/buy/42683) : 岡山県勝田郡奈義町西
 
 
 ### 1. Membership NFT System
